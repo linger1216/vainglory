@@ -1,63 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.4.4</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.jellyfish</groupId>
-  <artifactId>vainglory</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>vainglory</name>
-  <description>vainglory</description>
-  <url/>
-  <licenses>
-    <license/>
-  </licenses>
-  <developers>
-    <developer/>
-  </developers>
-  <scm>
-    <connection/>
-    <developerConnection/>
-    <tag/>
-    <url/>
-  </scm>
-  <properties>
-    <java.version>17</java.version>
-  </properties>
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-validation</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
 
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+  <groupId>com.vainglory</groupId>
+  <artifactId>vainglory</artifactId>
+  <version>${revision}</version>
+  <description>jellyfish team admin framework vainglory </description>
+  <name>vainglory</name>
+
+
+
+  <properties>
+    <revision>0.1.0</revision>
+    <java.version>17</java.version>
+
+    <vainglory.version>3.8.9</vainglory.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <spring-boot.version>3.4.4</spring-boot.version>
+    <druid.version>1.2.24</druid.version>
+<!--    <druid.version>1.2.23</druid.version>-->
+    <useragent.version>1.21</useragent.version>
+<!--    <swagger.version>3.0.0</swagger.version>-->
+<!--    <kaptcha.version>2.3.3</kaptcha.version>-->
+    <pagehelper.boot.version>2.1.0</pagehelper.boot.version>
+<!--    <fastjson.version>2.0.53</fastjson.version>-->
+<!--    <oshi.version>6.6.5</oshi.version>-->
+    <commons.io.version>2.18.0</commons.io.version>
+    <poi.ooxml.version>5.4.0</poi.ooxml.version>
+<!--    <velocity.version>2.3</velocity.version>-->
+    <jwt.version>0.12.6</jwt.version>
+
+    <!-- override dependency version -->
+<!--    <tomcat.version>9.0.102</tomcat.version>-->
+<!--    <logback.version>1.2.13</logback.version>-->
+<!--    <spring-security.version>6.4.4</spring-security.version>-->
+<!--    <spring-framework.version>6.2.5</spring-framework.version>-->
+
+  </properties>
+
+
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- SpringBoot的依赖配置-->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- 阿里数据库连接池 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+
+
+      <!-- 分页 -->
+      <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper-spring-boot-starter</artifactId>
+        <version>${pagehelper.boot.version}</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons.io.version}</version>
+      </dependency>
+
+      <!-- jwt -->
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+        <version>${jwt.version}</version>
+      </dependency>
+
+      <!-- 解析客户端操作系统、浏览器等 -->
+      <dependency>
+        <groupId>eu.bitwalker</groupId>
+        <artifactId>UserAgentUtils</artifactId>
+        <version>${useragent.version}</version>
+      </dependency>
+
+      <!-- excel工具 -->
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>${poi.ooxml.version}</version>
+      </dependency>
+
+<!-- 暂时先注释, 因为spring-boot-dependencies中已经定义了很多依赖, 除非发生问题暂时引入最少-->
+<!--      &lt;!&ndash; 覆盖SpringFramework的依赖配置&ndash;&gt;-->
+<!--      <dependency>-->
+<!--        <groupId>org.springframework</groupId>-->
+<!--        <artifactId>spring-framework-bom</artifactId>-->
+<!--        <version>${spring-framework.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+
+<!--      &lt;!&ndash; 覆盖SpringSecurity的依赖配置&ndash;&gt;-->
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.security</groupId>-->
+<!--        <artifactId>spring-security-bom</artifactId>-->
+<!--        <version>${spring-security.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-validation</artifactId>-->
+<!--      </dependency>-->
+
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-web</artifactId>-->
+<!--      </dependency>-->
+
+<!--      <dependency>-->
+<!--        <groupId>org.postgresql</groupId>-->
+<!--        <artifactId>postgresql</artifactId>-->
+<!--        <scope>runtime</scope>-->
+<!--      </dependency>-->
+
+
+<!--      <dependency>-->
+<!--        <groupId>org.projectlombok</groupId>-->
+<!--        <artifactId>lombok</artifactId>-->
+<!--        <optional>true</optional>-->
+<!--      </dependency>-->
+
+
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-test</artifactId>-->
+<!--        <scope>test</scope>-->
+<!--      </dependency>-->
+
+
+      <!-- 通用工具-->
+      <dependency>
+        <groupId>com.vainglory</groupId>
+        <artifactId>v-common</artifactId>
+        <version>${revision}</version>
+      </dependency>
+
+      <!-- 核心模块-->
+      <dependency>
+        <groupId>com.vainglory</groupId>
+        <artifactId>v-framework</artifactId>
+        <version>${revision}</version>
+      </dependency>
+
+
+    </dependencies>
+
+  </dependencyManagement>
+
+
+  <modules>
+    <module>v-common</module>
+    <module>v-framework</module>
+    <module>v-admin</module>
+  </modules>
+
+  <packaging>pom</packaging>
 
   <build>
     <plugins>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -70,6 +198,7 @@
           </annotationProcessorPaths>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
