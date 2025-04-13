@@ -15,6 +15,6 @@ public class VaingloryApplication {
       \\ \\_/ //  /\\  \\| || |\\  |\\  {_ }| `--.\\      /| .-. \\ }  { \s
        `---' `-'  `-'`-'`-' `-' `---' `----' `----' `-' `-' `--' \s
       """;
-    System.out.println("logo\n");
+    System.out.println(logo);
   }
 }

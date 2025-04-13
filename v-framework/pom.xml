@@ -25,7 +25,6 @@
   </properties>
 
 
-
   <dependencies>
     <!-- SpringBoot Web容器 -->
     <dependency>
@@ -43,6 +42,12 @@
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid-spring-boot-starter</artifactId>
+    </dependency>
+
+    <!-- 系统模块-->
+    <dependency>
+      <groupId>com.vainglory</groupId>
+      <artifactId>v-system</artifactId>
     </dependency>
   </dependencies>
 
