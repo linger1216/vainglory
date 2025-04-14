@@ -1,3 +1,0 @@
-# vainglory
-
-admin framework
