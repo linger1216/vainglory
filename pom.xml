@@ -36,11 +36,28 @@
     <mapstruct.version>1.6.3</mapstruct.version>
     <springdoc.version>2.7.0</springdoc.version>
     <guava.version>33.4.0-jre</guava.version>
+    <jsoup.version>1.18.3</jsoup.version>
+
+    <!-- 监控相关 -->
+    <skywalking.version>9.0.0</skywalking.version>
+
   </properties>
 
   <dependencyManagement>
 
     <dependencies>
+
+      <dependency>
+        <groupId>org.jsoup</groupId>
+        <artifactId>jsoup</artifactId>
+        <version>${jsoup.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.skywalking</groupId>
+        <artifactId>apm-toolkit-trace</artifactId>
+        <version>${skywalking.version}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.mapstruct</groupId>

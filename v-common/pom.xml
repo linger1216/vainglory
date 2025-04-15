@@ -14,6 +14,11 @@
 
   <dependencies>
 
+    <dependency>
+      <groupId>org.apache.skywalking</groupId>
+      <artifactId>apm-toolkit-trace</artifactId>
+    </dependency>
+
     <!-- Spring 核心 -->
     <dependency>
       <groupId>org.springframework</groupId>
